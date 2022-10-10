@@ -1,12 +1,16 @@
 import './App.css';
 import { Header, Sidebar, Content } from 'src/components';
 import { WeChatImitation } from 'src/pages';
+import { useState } from 'react';
+import { useCallback } from 'react';
 
 function App() {
+  const [catalogs, setCatalogs] = useState([]);
   return (
     <div className='react-demo-box'>
       <Header>
         React Demo
+        <button onClick={() => setCatalogs([...catalogs, catalogs.length])}>Add</button>
       </Header>
       <div
         style={{
@@ -17,9 +21,9 @@ function App() {
           overflow: 'hidden',
         }}
       >
-        <Sidebar />
+        <Sidebar catalogs={catalogs}/>
         <Content>
-          <WeChatImitation />
+          {/* <WeChatImitation /> */}
         </Content>
       </div>
     </div>
